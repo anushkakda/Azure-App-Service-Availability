@@ -4,6 +4,10 @@
  
 An App Service scale unit has several pools of Workers pre-provisioned and ready to host your application. The compute resources of these Workers are defined by the App Service Plan, which in-turn is a collection of VM's which have same compute resources. App Services are hosted on VMs and these are managed by the platform.
 
+<br />
+<br />
+
+
 ![overview](./media/overview.png) 
 
 The number of instances of the App Service infer the number of VMs on which the App Service is running.
