@@ -1,6 +1,5 @@
 # Azure-App-Service-Availability
 
-Sample that shows how to fetch a secret from Azure Key Vault at run-time from an Function App with a User Assigned Managed Service Identity (MSI).
-
-# Managed identities for Azure resources
-Managed identities for Azure resources provide Azure services with an automatically managed identity in Azure Active Directory. Using a managed identity, you can authenticate to any service that supports Azure AD authentication without having credentials in your code. We are in the process of integrating managed identities for Azure resources and Azure AD authentication across Azure. 
+**App Services** is a **Platform as a Service** offering, where OS upgrades, scaling, and load balancing are handled by the platform itself.
+ 
+An App Service scale unit has several pools of Workers pre-provisioned and ready to host your application. The compute resources of these Workers are defined by the App Service Plan, which in-turn is a collection of VM's which have same compute resources. App Services are hosted on VMs and these are managed by the platform. 
