@@ -12,6 +12,7 @@ In order to ensure that the App Service is resilient, it is important to make su
  
 However, it is rare; but possible that the app can face some downtime if the instance undergoes any platform upgrade or maintenance.
 
+![Upgrade Domains](./media/update.png)
 
 Therefore to increase the resiliency at the instance level; **our recommendation would be maintain two or more instances allocated for your App Service.** 
  
@@ -21,7 +22,7 @@ Now let’s take a step back, you may wonder how would a situation be handled if
  
 However, do note that not all regions have Availability Zones. Below is the pictorial representation of the Azure Regions and their Availability Zones – 
 
-
+![Azure Regions](./media/azureRegions.png)
 Further zooming out to see the bigger picture, you may also want to understand how could you further improve you App Service availability making them resilient to natural calamities affecting the regions your apps reside in.
 It is important to understand that the responsibility of maintaining such a requirement is shared between the Cloud Provider and Owner of the applications.
  
