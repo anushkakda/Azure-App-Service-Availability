@@ -35,7 +35,7 @@ Now speaking specifically in terms Azure App Service, not only the infrastructur
  
 Along with these it is also recommended to perform load test to analyze and understand the load that could hit your App Service. Scaling the App Service plan either **manually** or through **auto scale rules** would enable better results to your Applications.
 
-
+<br />
 
 
 # References :
