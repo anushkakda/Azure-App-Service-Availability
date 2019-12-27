@@ -36,10 +36,11 @@ Along with these it is also recommended to perform load test to analyze and unde
 
 
 
-#References :
-·       Resilience in Microsoft Azure : https://azure.microsoft.com/mediahandler/files/resourcefiles/resilience-in-azure-whitepaper/Resilience%20in%20Azure.pdf
-·       Demystifying the magic behind App Service OS updates : https://azure.github.io/AppService/2018/01/18/Demystifying-the-magic-behind-App-Service-OS-updates.html
-·       Scale up and Scale out  in Azure App Services : https://azure.microsoft.com/en-in/blog/scaling-up-and-scaling-out-in-windows-azure-web-sites/
-·       Recover from region-wide service disruption : https://docs.microsoft.com/en-us/azure/architecture/resiliency/recovery-loss-azure-region#app-service
-·       Azure Web Apps – Reference Architectures : Improve Scalability : https://docs.microsoft.com/en-us/azure/architecture/reference-architectures/app-service-web-app/scalable-web-app
-·       Azure Web Apps – Reference Architectures : Multi-region Deployment : https://docs.microsoft.com/en-us/azure/architecture/reference-architectures/app-service-web-app/multi-region
+# References :
+
+ Markup : * Resilience in Microsoft Azure : https://azure.microsoft.com/mediahandler/files/resourcefiles/resilience-in-azure-whitepaper/Resilience%20in%20Azure.pdf
+          * Demystifying the magic behind App Service OS updates : https://azure.github.io/AppService/2018/01/18/Demystifying-the-magic-behind-App-Service-OS-updates.html
+          * Scale up and Scale out  in Azure App Services : https://azure.microsoft.com/en-in/blog/scaling-up-and-scaling-out-in-windows-azure-web-sites/
+          * Recover from region-wide service disruption : https://docs.microsoft.com/en-us/azure/architecture/resiliency/recovery-loss-azure-region#app-service
+          * Azure Web Apps – Reference Architectures : Improve Scalability : https://docs.microsoft.com/en-us/azure/architecture/reference-architectures/app-service-web-app/scalable-web-app
+          * Azure Web Apps – Reference Architectures : Multi-region Deployment : https://docs.microsoft.com/en-us/azure/architecture/reference-architectures/app-service-web-app/multi-region
