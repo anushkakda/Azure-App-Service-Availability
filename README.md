@@ -12,7 +12,7 @@ App Services is a **_Platform as a Service offering_**, where both the Cloud Ser
 <br />
 
 
-![overview](./media/paas.png) 
+![overview](./media/PaaS.png) 
 
 <br />
 
@@ -38,7 +38,7 @@ Hence, Cold start is a term used to describe the delay in the first request made
 <br />
 <br />
 
-![Cold Starts](./media/coldStart.png)
+![Cold Starts](./media/ColdStart.jpg)
 
 <br />
 
