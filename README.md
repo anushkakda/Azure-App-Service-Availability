@@ -42,8 +42,6 @@ Hence, Cold start is a term used to describe the delay in the first request made
   <img  src="./media/ColdStart.jpg">
 </p>
 
-![Cold Starts](./media/ColdStart.jpg)
-
 <br />
 
 The easiest way out is, to make use of the **AlwaysOn** feature. A web app can time out after **20 minutes of inactivity**. Only requests to the actual web app reset the timer. Therefore, the AlwaysOn feature would help keep the app loaded even when there's no traffic. With the Always On feature, you can’t control the endpoint. It always sends a request to the application root.
