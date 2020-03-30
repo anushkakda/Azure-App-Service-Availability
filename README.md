@@ -38,6 +38,10 @@ Hence, Cold start is a term used to describe the delay in the first request made
 <br />
 <br />
 
+<p align="center">
+  <img  src="./media/ColdStart.jpg">
+</p>
+
 ![Cold Starts](./media/ColdStart.jpg)
 
 <br />
@@ -47,9 +51,12 @@ The easiest way out is, to make use of the **AlwaysOn** feature. A web app can t
 If you wish to customize the path that receives the warmup request, you can make use of the Application Initialization Module. This process doesn’t make the startup process _faster_, but starts the process _sooner_.  The fun part is: when making use of scaling within Azure Apps, this mechanism can be used to warmup the specific new azure app service instances.
 
 In case your application is highly critical – it is always a best practice to geo replicate the application. This can help prepare in advance from any unforeseen calamities and natural disaster.  There are already well elaborated article on how we can consume these networking components with App Services – 
-* [Using Azure Front Door with App Services](https://azure.microsoft.com/mediahandler/files/resourcefiles/resilience-in-azure-whitepaper/Resilience%20in%20Azure.pdf)
-* [Controlling App Service Traffic with App Services](https://azure.github.io/AppService/2018/01/18/Demystifying-the-magic-behind-App-Service-OS-updates.html)
 
+* [Using Azure Front Door with App Services](https://www.e-apostolidis.gr/microsoft/azure/securely-scale-your-web-apps-with-azure-front-door/)
+* [Controlling App Service Traffic with App Services](https://docs.microsoft.com/en-us/azure/app-service/web-sites-traffic-manager)
+
+
+<br/>
 
 To reiterate, App Service scale unit has several pools of Workers pre-provisioned and ready to host your application. These Scale Units always have spare capacity to handle a single-instance failure or any other unforeseen situations. This buffer capacity is also used to handle scale-out requests and in turn help with availability and resiliency in App Services.
 
@@ -65,7 +72,7 @@ For increasing the resiliency at the instance level; **our recommendation would 
 
 <br />
 
-These multiple instances then are divided and hosted among different racks. These instances would be in different update domains and in different fault domains. So, if one rack has a hardware failure and takes down one VM with it, our app is not down, as we can continue to use the others.
+These multiple instances then are divided and hosted among different racks. These instances would be in different update domains and in different fault domains. So, if one rack has a hardware failure and takes down one VM with it, our app is not down, as we can continue to use others.
   
 Service Level Agreement or SLA **describes Microsoft’s commitments for uptime and connectivity**. Now speaking specifically in terms Azure App Service, not only the infrastructure but the application itself is also responsible for high availability and faster performance. Your application may not be solely an App Service, but could also be internally connecting with MySQL, Redis Cache or any other third-party resource. It is important to understand that SLA applicable would be a composite one keeping in mind the **SLA of every single resource in use**.
 
