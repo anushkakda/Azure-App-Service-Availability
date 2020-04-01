@@ -12,7 +12,7 @@ App Services is a **_Platform as a Service offering_**, where both the Cloud Ser
 <br />
 
 
-![overview](./media/PaaS.png) 
+![overview](./media/IPS.png) 
 
 <br />
 
@@ -79,7 +79,7 @@ Service Level Agreement or SLA **describes Microsoft’s commitments for uptime 
 
 # References :
 
-* [IaaS,PaaS and SaaS](https://www.bmc.com/blogs/saas-vs-paas-vs-iaas-whats-the-difference-and-how-to-choose/) -Picture
+* [IaaS,PaaS and SaaS](https://azure.microsoft.com/en-in/overview/what-is-paas/)
 * [Understanding Cold Start](https://azure.microsoft.com/en-in/blog/understanding-serverless-cold-start/)
 * [App Init Concepts](https://blog.baslijten.com/warmup-your-application-on-azure-app-service-when-scaling-up-and-swapping-slots-using-application-initialization/)
 * [App Init with Azure App Service](https://docs.microsoft.com/en-us/azure/app-service/deploy-staging-slots)
