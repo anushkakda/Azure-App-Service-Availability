@@ -12,7 +12,7 @@ App Services is a **_Platform as a Service offering_**, where both the Cloud Ser
 <br />
 
 
-![overview](./media/IPS.png) 
+![overview](./media/IPS.PNG) 
 
 <br />
 
