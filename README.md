@@ -7,7 +7,7 @@ App Service scale unit has several pools of Workers pre-provisioned and ready to
 The number of instances of the App Service infer the number of VMs on which the App Service is running.
 
 
-App Services is a **_Platform as a Service offering_**, where both the Cloud Service Provider and the Consumer share responsibility and accountability. The CSP (in this case Azure) manages the platform, the OS upgrades, scaling, and load balancing. This leaves the consumer with more room to focus on the application and data.
+App Services is a **_Platform as a Service offering_**, where both the Cloud Service Provider and the Consumer share responsibility and accountability. The CSP (in this case Azure) manages the platform, the OS upgrades and load balancing. This leaves the consumer with more room to focus on the application and data.
 <br />
 <br />
 
@@ -30,9 +30,9 @@ We can choose to scale horizontally(adding/removing instances that run the servi
 Now that we have made sure that the compute resources would be allocated/deallocated according to the demands of the situation; would it not be nice if the Application performance can also be enhanced?
 
 
-The easiest and often ignored problem is **Cold Start**. What’s important to understand is that these  compute resources can get deallocated in case of application inactivity; that is, if no requests have been made to the App Service for over 20mins, and the existing instance is not busy processing the earlier requests – the instance would be freed up (deallocated). When this happens, cold start condition may surface. 
+The easiest and often ignored problem is **cold start**. What’s important to understand is that these  compute resources can get deallocated in case of application inactivity; that is, if no requests have been made to the App Service for over 20mins, and the existing instance is not busy processing the earlier requests – the instance would be freed up (deallocated). When this happens, cold start condition may surface. 
 
-Hence, Cold start is a term used to describe the delay in the first request made to an application upon startup. One of the most common reasons for cold start is the automatic instance deallocation that we discussed earlier. Therefore, idleness of the application causes latency and in turn affects the performance.
+Hence, cold start is a term used to describe the delay in the first request made to an application upon startup. One of the most common reasons for cold start is the automatic instance deallocation that we discussed earlier. Therefore, idleness of the application causes latency and in turn affects the performance.
 
 
 <br />
