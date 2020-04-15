@@ -7,7 +7,9 @@ App Service scale unit has several pools of Workers pre-provisioned and ready to
 The number of instances of the App Service infer the number of VMs on which the App Service is running.
 
 
-App Services is a **_Platform as a Service offering_**, where both the Cloud Service Provider and the Consumer share responsibility and accountability. The CSP (in this case Azure) manages the platform, the OS upgrades and load balancing. This leaves the consumer with more room to focus on the application and data.
+App Services is a **_Platform as a Service_** offering, where both the Cloud Service Provider and the Consumer share responsibility and accountability. The CSP (in this case Azure) manages the platform, the OS upgrades and load balancing. This leaves the consumer with more room to focus on the application and data.
+
+
 <br />
 <br />
 
@@ -16,14 +18,14 @@ App Services is a **_Platform as a Service offering_**, where both the Cloud Ser
 
 <br />
 
-Having said that, lets look at some recommended practices that we as the owner of the applications can take to make them more resilient and highly available – 
-
-To begin with, we can host our applications on multiple instances to ensure the availability of the application. It is always important to ensure enough compute resources have been allocated for the application to enable smooth performance, even at the times of heavy load.
-
-But how do we ensure that? 
+Having said that, let’s look at some recommended practices that we as the owner of the applications can take to make them more resilient and highly available – 
 
 
-The **_Auto scale feature_** with Azure allows us to do the magic here.
+To begin with, it is always recommended to host our application on at least two instances to ensure the availability of the application. If for any reason an instance is not available, we know that the other instance which is up and running; still serving the users. It is always important to ensure enough compute resources have been allocated for the application to enable smooth performance, even at the times of heavy load.
+
+We can always manually scale the instances to any number that we think is required for the smooth performance. But while this requires constant monitoring and manual intervention, would it not be nice if it could be automatically done? 
+
+The **_Auto scale_** feature with Azure allows us to do the magic here.
 
 We can choose to scale horizontally(adding/removing instances that run the service) or vertically(increase/decrease the capacity of the instances that run the service). In regards with Azure App Service, the necessary scale actions can be taken based on the conditions you choose.
 
@@ -48,7 +50,7 @@ The easiest way out is, to make use of the **AlwaysOn** feature. A web app can t
 
 If you wish to customize the path that receives the warmup request, you can make use of the Application Initialization Module. This process doesn’t make the startup process _faster_, but starts the process _sooner_.  The fun part is: when making use of scaling within Azure Apps, this mechanism can be used to warmup the specific new azure app service instances.
 
-In case your application is highly critical – it is always a best practice to geo replicate the application. This can help prepare in advance from any unforeseen calamities and natural disaster.  There are already well elaborated article on how we can consume these networking components with App Services – 
+In case your application is highly critical – it is always a best practice to **geo replicate the application**. In this case resources like Azure Front Door or the Traffic Manager etc are used to route the requests to either Web app based on the conditions you decide (eg – keeping the app in a region A as the primary one and the other as secondary). This can help prepare in advance from any unforeseen calamities and natural disaster.  There are already well elaborated articles on how we can consume these networking components with App Services – 
 
 * [Using Azure Front Door with App Services](https://www.e-apostolidis.gr/microsoft/azure/securely-scale-your-web-apps-with-azure-front-door/)
 * [Controlling App Service Traffic with App Services](https://docs.microsoft.com/en-us/azure/app-service/web-sites-traffic-manager)
@@ -60,9 +62,7 @@ To reiterate, App Service scale unit has several pools of Workers pre-provisione
 
 Along with this there are periodic health checks that the platform conducts to monitor the state of the instances that run the services. There are automated mitigation steps in place to catch any issues and automatically resolve them to provide a seamless experience. 
 
-To ensure that the App Service is resilient, it is important to make sure that the instance on which the App Service is running, is healthy and to up to date. We ensure to regularly update the domain, patch the system and the assure that the instance are available for our Customers.
-
-For increasing the resiliency at the instance level; **our recommendation would be maintaining two or more instances allocated for your App Service.**
+To ensure that the App Service is resilient, it is important to make sure that the instance on which the App Service is running, is healthy and up to date. We ensure to regularly update the domain, patch the system and the assure that the instance are available for our Customers.
 
 <br />
 
@@ -70,9 +70,22 @@ For increasing the resiliency at the instance level; **our recommendation would 
 
 <br />
 
-These multiple instances then are divided and hosted among different racks. These instances would be in different update domains and in different fault domains. So, if one rack has a hardware failure and takes down one VM with it, our app is not down, as we can continue to use others.
-  
-Service Level Agreement or SLA **describes Microsoft’s commitments for uptime and connectivity**. Now speaking specifically in terms Azure App Service, not only the infrastructure but the application itself is also responsible for high availability and faster performance. Your application may not be solely an App Service, but could also be internally connecting with MySQL, Redis Cache or any other third-party resource. It is important to understand that SLA applicable would be a composite one keeping in mind the **SLA of every single resource in use**.
+These multiple instances then are divided and hosted among different racks. These instances would be in different update domains and in different fault domains. So, if one rack has a hardware failure and takes down one VM with it, our app is not down, as we can continue to use the other VM’s.
+
+
+You may wonder if you can replicate the data, application, and related resources into multiple datacenters in the same region for enhanced safety. We internally implement a concept that we call **Availability zones**. This ensures to protect your applications and data from datacenter failures across multiple physical locations within a region.
+
+*[App Service Environments](https://docs.microsoft.com/en-us/azure/app-service/environment/intro) have the support for Availability Zones.
+
+
+Customers can choose to optionally deploy internal load balancer (ILB) ASEs into a specific Availability Zone within an Azure region, and the resources used by that ILB ASE will either be pinned to the specified AZ, or deployed in a zone redundant manner.
+Do note that the external facing ASE’s do not have the support for this feature as of now.
+
+Also, not all regions have Availability Zones. Below is the pictorial representation of the Azure Regions and their Availability Zones –
+
+![Availability Zone](./media/az.png)
+
+**_Microsoft’s commitments for uptime and connectivity is described_** through Service Level Agreement or SLA. Now speaking specifically in terms Azure App Service, not only the infrastructure but the application itself is also responsible for high availability and faster performance. Your application may not be solely an App Service, but could also be internally connecting with MySQL, Redis Cache or any other third-party resource. It is important to understand that SLA applicable would be a composite one keeping in mind the **SLA of every single resource** in use.
 
 <br />
 
@@ -88,3 +101,4 @@ Service Level Agreement or SLA **describes Microsoft’s commitments for uptime 
 * [Scale up and Scale out  in Azure App Services](https://azure.microsoft.com/en-in/blog/scaling-up-and-scaling-out-in-windows-azure-web-sites/)
 * [Azure Web Apps – Reference Architectures: Improve Scalability](https://docs.microsoft.com/en-us/azure/architecture/reference-architectures/app-service-web-app/scalable-web-app)
 * [Azure Web Apps – Reference Architectures: Multi-region Deployment](https://docs.microsoft.com/en-us/azure/architecture/reference-architectures/app-service-web-app/multi-region)
+* [ASE Support For Availability Zones](https://azure.github.io/AppService/2019/12/12/App-Service-Environment-Support-for-Availability-Zones.html)
