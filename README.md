@@ -37,12 +37,13 @@ We can choose to **scale horizontally(adding/removing instances that run the ser
 Now that we have made sure that the compute resources would be allocated/deallocated according to the demands of the situation; would it not be nice if the Application performance can also be enhanced?
 
 
-If no requests have been made to the App Service for over **20mins**, and the existing instance is not busy processing the earlier requests – the instance would be freed up (deallocated). 
+If no requests have been made to the App Service for over 20mins, and the existing instance is not busy processing the earlier requests – the instance would be freed up (deallocated). 
 Therefore, idleness of the application causes latency and in turn affects the performance.
 
 
-The easiest way out is, to make use of the AlwaysOn feature. A web app can time out after 20 minutes of inactivity. Only requests to the actual web app resets the timer. Therefore, the AlwaysOn feature would help keep the app loaded even when there's no traffic. With the Always On feature, you can’t control the endpoint. It always sends a request to the application root.
+The easiest way out is, to make use of the AlwaysOn feature. A web app can time out after **20 minutes of inactivity**. Only requests to the actual web app resets the timer. Therefore, the AlwaysOn feature would help keep the app loaded even when there's no traffic. With the Always On feature, you can’t control the endpoint. It always sends a request to the application root.
 
+![Always On](./media/AlwaysOn.png)
 
 If you wish to customize the path that receives the warmup request, you can make use of the Application Initialization Module. This process doesn’t make the startup process faster, but starts the process sooner.  This module could also be useful ensuring your application is ready to take requests especially if you scale out or swap , or help cache information from the database, even before serving the requests, thus enhancing the performance of the application.
 
