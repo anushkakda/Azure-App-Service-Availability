@@ -1,13 +1,13 @@
 # Azure-App-Service-Availability
 
-**_Azure App Service_** is an HTTP-based service for hosting web applications, REST APIs, and mobile back ends. You can develop in your favorite language, be it .NET, .NET Core, Java, Ruby, Node.js, PHP, or Python.
+**Azure App Service** is an HTTP-based service for hosting web applications, REST APIs, and mobile back ends. You can develop in your favorite language, be it .NET, .NET Core, Java, Ruby, Node.js, PHP, or Python.
 
-App Service scale unit has several pools of Workers pre-provisioned and ready to host your application. The compute resources of these Workers are defined by the App Service Plan (that you choose), which in-turn is a collection of VM's which have same compute resources.
+App Service scale unit or a stamp has several pools of Workers pre-provisioned and ready to host your application. The compute resources of these Workers are defined by the App Service Plan, that you choose while creation.
 
 The number of instances of the App Service infer the number of VMs on which the App Service is running.
 
 
-App Services is a **_Platform as a Service_** offering, where both the Cloud Service Provider and the Consumer share responsibility and accountability. The CSP (in this case Azure) manages the platform, the OS upgrades and load balancing. This leaves the consumer with more room to focus on the application and data.
+App Services is a **Platform as a Service** offering, where both the Cloud Service Provider and the Consumer share responsibility and accountability. The CSP (in this case Azure) manages the platform, the OS upgrades and load balancing. This leaves the consumer with more room to focus on the application and data.
 
 
 <br />
@@ -21,38 +21,35 @@ App Services is a **_Platform as a Service_** offering, where both the Cloud Ser
 Having said that, let’s look at some recommended practices that we as the owner of the applications can take to make them more resilient and highly available – 
 
 
-To begin with, it is always recommended to host our application on at least two instances to ensure the availability of the application. If for any reason an instance is not available, we know that the other instance which is up and running; still serving the users. It is always important to ensure enough compute resources have been allocated for the application to enable smooth performance, even at the times of heavy load.
+To begin with, it is always important to provide enough compute resources enough compute resources have been allocated for the application to enable smooth performance, even at the times of heavy load.
 
-We can always manually scale the instances to any number that we think is required for the smooth performance. But while this requires constant monitoring and manual intervention, would it not be nice if it could be automatically done? 
 
-The **_Auto scale_** feature with Azure allows us to do the magic here.
+It is recommended however, not mandatory, to host our application on at least two instances to ensure the availability of the application. If for any reason one instance is not available, we know that the other instance which is up and running: still serving our users. 
 
-We can choose to scale horizontally(adding/removing instances that run the service) or vertically(increase/decrease the capacity of the instances that run the service). In regards with Azure App Service, the necessary scale actions can be taken based on the conditions you choose.
+We can always manually scale the instances to any number of instances that we think is required for the smooth performance. But while this requires constant monitoring and manual intervention, would it not be nice if it could be automatically done? 
+
+The **Auto scale** feature with Azure allows us to do the magic here.
+
+
+We can choose to **scale horizontally(adding/removing instances that run the service)** or **vertically(increase/decrease the capacity of the instances that run the service)**. In regards with Azure App Service, the necessary scale actions can be taken based on the conditions you choose.
+
 
 Now that we have made sure that the compute resources would be allocated/deallocated according to the demands of the situation; would it not be nice if the Application performance can also be enhanced?
 
 
-The easiest and often ignored problem is **cold start**. What’s important to understand is that these  compute resources can get deallocated in case of application inactivity; that is, if no requests have been made to the App Service for over 20mins, and the existing instance is not busy processing the earlier requests – the instance would be freed up (deallocated). When this happens, cold start condition may surface. 
+If no requests have been made to the App Service for over **20mins**, and the existing instance is not busy processing the earlier requests – the instance would be freed up (deallocated). 
+Therefore, idleness of the application causes latency and in turn affects the performance.
 
-Hence, cold start is a term used to describe the delay in the first request made to an application upon startup. One of the most common reasons for cold start is the automatic instance deallocation that we discussed earlier. Therefore, idleness of the application causes latency and in turn affects the performance.
+
+The easiest way out is, to make use of the AlwaysOn feature. A web app can time out after 20 minutes of inactivity. Only requests to the actual web app resets the timer. Therefore, the AlwaysOn feature would help keep the app loaded even when there's no traffic. With the Always On feature, you can’t control the endpoint. It always sends a request to the application root.
 
 
-<br />
-<br />
+If you wish to customize the path that receives the warmup request, you can make use of the Application Initialization Module. This process doesn’t make the startup process faster, but starts the process sooner.  This module could also be useful ensuring your application is ready to take requests especially if you scale out or swap , or help cache information from the database, even before serving the requests, thus enhancing the performance of the application.
 
-<p align="center">
-  <img  src="./media/ColdStart.jpg">
-</p>
-
-<br />
-
-The easiest way out is, to make use of the **AlwaysOn** feature. A web app can time out after **20 minutes of inactivity**. Only requests to the actual web app reset the timer. Therefore, the AlwaysOn feature would help keep the app loaded even when there's no traffic. With the Always On feature, you can’t control the endpoint. It always sends a request to the application root.
-
-If you wish to customize the path that receives the warmup request, you can make use of the Application Initialization Module. This process doesn’t make the startup process _faster_, but starts the process _sooner_.  The fun part is: when making use of scaling within Azure Apps, this mechanism can be used to warmup the specific new azure app service instances.
 
 In case your application is highly critical – it is always a best practice to **geo replicate the application**. In this case resources like Azure Front Door or the Traffic Manager etc are used to route the requests to either Web app based on the conditions you decide (eg – keeping the app in a region A as the primary one and the other as secondary). This can help prepare in advance from any unforeseen calamities and natural disaster.  There are already well elaborated articles on how we can consume these networking components with App Services – 
 
-* [Using Azure Front Door with App Services](https://www.e-apostolidis.gr/microsoft/azure/securely-scale-your-web-apps-with-azure-front-door/)
+* [Using Azure Front Door with App Services](https://docs.microsoft.com/en-us/azure/architecture/reference-architectures/app-service-web-app/scalable-web-app#azure-front-door)
 * [Controlling App Service Traffic with App Services](https://docs.microsoft.com/en-us/azure/app-service/web-sites-traffic-manager)
 
 
