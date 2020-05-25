@@ -45,7 +45,7 @@ The easiest way out is, to make use of the AlwaysOn feature. A web app can time 
 
 ![Always On](./media/AlwaysOn.PNG)
 
-If you wish to customize the path that receives the warmup request, you can make use of the Application Initialization Module. This process doesn’t make the startup process faster, but starts the process sooner.  This module could also be useful ensuring your application is ready to take requests especially if you scale out or swap , or help cache information from the database, even before serving the requests, thus enhancing the performance of the application.
+If you wish to customize the path that receives the warmup request, you can make use of the * [IIS Application Initialization Module](https://docs.microsoft.com/en-us/iis/configuration/system.webserver/applicationinitialization/). App Service integrates nicely with **IIS AppInit**, so to route traffic with awareness of warm and cold instances. This module doesn’t make the startup process faster, but starts the process sooner. This module could also be useful ensuring your application is ready to take requests especially if you scale out or swap, or help cache information from the database, even before serving the requests, thus enhancing the performance of the application.
 
 
 In case your application is highly critical – it is always a best practice to **geo replicate the application**. In this case resources like Azure Front Door or the Traffic Manager etc are used to route the requests to either Web app based on the conditions you decide (eg – keeping the app in a region A as the primary one and the other as secondary). This can help prepare in advance from any unforeseen calamities and natural disaster.  There are already well elaborated articles on how we can consume these networking components with App Services – 
@@ -92,7 +92,7 @@ Also, not all regions have Availability Zones. Below is the pictorial representa
 
 * [IaaS,PaaS and SaaS](https://azure.microsoft.com/en-in/overview/what-is-paas/)
 * [Understanding Cold Start](https://azure.microsoft.com/en-in/blog/understanding-serverless-cold-start/)
-* [App Init Concepts](https://blog.baslijten.com/warmup-your-application-on-azure-app-service-when-scaling-up-and-swapping-slots-using-application-initialization/)
+* [App Init Concepts](https://michaelcandido.com/app-service-warm-up-demystified/)
 * [App Init with Azure App Service](https://docs.microsoft.com/en-us/azure/app-service/deploy-staging-slots)
 * [Resilience in Microsoft Azure](https://azure.microsoft.com/mediahandler/files/resourcefiles/resilience-in-azure-whitepaper/Resilience%20in%20Azure.pdf)
 * [Demystifying the magic behind App Service OS updates](https://azure.github.io/AppService/2018/01/18/Demystifying-the-magic-behind-App-Service-OS-updates.html)
